@@ -1,0 +1,48 @@
+{%extends 'layout.html'%}
+{%block body%}
+
+
+<div class="row">
+    <div class = "col-md-5">
+            {%include 'partials/_message.html'%}
+            {%include 'partials/_contactForm.html'%}
+    </div>
+    <div class = "col-md-7">
+       
+            {%for contact in contacts%}
+                <div class = "card mb-1 text-white bg-dark">
+                   
+                    <div class ="d-flex justify-content-between">
+                        <h5>
+                            {{contact.fullname}}
+                        </h5>
+                        <a href="{{url_for('contacts.update_contact', id = contact.id )}}"
+                             class = "btn btn-warning btn-sm rounded-0">
+                                Edit
+                        </a>
+                        <a href="{{url_for('contacts.delete_contact', id = contact.id)}}"
+                             class = "btn btn-danger btn-sm rounded-0">
+                                Delete
+                        </a>
+                </div>
+                    
+                    <p>
+                        {{contact.email}}
+                    </p>
+                    
+                    <p>
+                        {{contact.phone}}
+                    </p>
+                  
+                </div>
+            {%endfor%}
+        </div>
+    </form>
+  </div>
+
+
+{%endblock%}
+
+
+
+    
